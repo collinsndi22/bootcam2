@@ -1,0 +1,268 @@
+<?php
+
+// echo "grading system";
+// $mathScore = 80;
+// $englishScore = 70;
+// $scienceScore = 90;
+// $socialStudiesScore = 70;
+$mathScore = "";
+$englishScore = "";
+$scienceScore = "";
+$socialStudiesScore = "";
+if(isset($_POST['verify'])) {
+if($_POST['verify'] === $mathScore) {
+
+// gradings starts from here
+if($mathScore>= 90){
+	echo '<br>' ."Math:". " ". "A";
+}
+elseif($mathScore >=80){
+	echo '<br>' . "Math:". " ". "B";
+}
+elseif($mathScore >=70){
+	echo '<br>' . "Math:". " ". "C";
+}
+elseif($mathScore >=60){
+	echo '<br>' . "Math:". " ". "D";
+}
+else{
+	echo '<br>' . "Math:". " ". "F";
+}
+}
+}
+if($englishScore>= 90){
+	echo '<br>' . "English:". " ". "A";
+}
+elseif($englishScore >=80){
+	echo '<br>' . "English:". " ". "B";
+}
+elseif($englishScore >=70){
+	echo '<br>' . "English:". " ". "C";
+}
+elseif($englishScore >=60){
+	echo "English:". " ". "D";
+}
+else{
+	echo '<br>' . "English:". " ". "F";
+}
+if($scienceScore>= 90){
+	echo '<br>' . "Science:". " ". "A";
+}
+elseif($scienceScore >=80){
+	echo '<br>' . "Science:". " ". "B";
+}
+elseif($scienceScore >=70){
+	echo '<br>' . "Science:". " ". "C";
+}
+elseif($scienceScore >=60){
+	echo "Science:". " ". "D";
+}
+else{
+	echo '<br>' . "English:". " ". "F";
+}
+if($socialStudiesScore>= 90){
+	echo '<br>' . "Social Studies:". " ". "A";
+}
+elseif($socialStudiesScore >=80){
+	echo '<br>' . "Social Studies:". " ". "B";
+}
+elseif($socialStudiesScore >=70){
+	echo '<br>' . "Social Studies:". " ". "C";
+}
+elseif($socialStudiesScore >=60){
+	echo "Social Studies:". " ". "D";
+}
+else{
+	echo '<br>' . "Social Studies:". " ". "F";
+}
+
+// titution determination system starts here.
+echo '<br>'  . "Tuition Determination System:";
+$nationality = "Ugandan";
+$is_orphan = "True";
+$a_level_points = 45;
+// decision making starts from here;
+if($nationality = "Ugandan" && $is_orphan="true"){
+	echo '<br>' ."Tuition for domestic orphan students is $" ." " ."10000";
+}
+ if($nationality != "Ugandan" && $is_orphan != "True"){
+ 	echo '<br>' ."tuition for International and un orphan students is $"." " ."20000";
+ }
+ elseif($nationality = "Ugandan" && $is_orphan="true" && $a_level_points > 45){
+ 	echo '<br>' ."Your Tuition is $" ." " ."5000";
+ }
+ elseif($nationality = "Ugandan" && $a_level_points < 45){
+ 	echo '<br>' ."Your Tuition is $" ." " ."8000";	
+ }
+ elseif($nationality != "Ugandan" && $a_level_points >= 45){
+ 	echo '<br>' ."Your Tuition is $" ." " ."15000";	
+ }
+
+
+ ?>
+
+
+
+ <!DOCTYPE html>
+ <html>
+ <head>
+ 	<meta charset="utf-8">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1">
+ 	<title>Verfiy</title>
+ </head>
+ <body bgcolor = "lavender">
+ 	<br>
+ 	<div class="con" style="display: flex; flex-direction: row; margin-left: 20%;">
+ 		<div class="row">
+ <form method="post" style="margin-left: 20%;">
+ 	<label>Marks verification</label>
+ 	<br><br>
+ 	<input type="text" name="math" placeholder="Enter Math" style="padding: 20px; width:300px;
+ 	 "><br><br>
+ 	 <?php if(isset($final_answer)): ?><?php echo $final_answer; ?><?php endif; ?>
+ 	 <input type="text" name="eng" placeholder="Enter English" style="padding: 20px; width:300px;
+ 	 "><br><br>
+ 	 <input type="text" name="sst" placeholder="Enter Social studies" style="padding: 20px; width:300px;
+ 	 "><br><br>
+ 	 <input type="text" name="sciences" placeholder="Enter Sciences" style="padding: 20px; width:300px;
+ 	 "><br><br>
+ 	 <input type="submit" name="submit_form" value="Input scores and run" style="padding: 20px; width:300px;
+ 	 ">
+
+ 	 <?php if(isset($mathScore)): ?><?php echo $mathScore; ?><?php endif; ?>
+ 	</form>
+ </div>
+ <div class="row" style="margin-left:30px;">
+ 	<form method="post" style="margin-left: 20%;">
+ 	<label>Tuition verification</label>
+ 	<br><br>
+ 	<input type="text" name="nationality" placeholder="Nationality" style="padding: 20px; width:300px;
+ 	 "><br><br>
+ 	 <input type="text" name="status" placeholder="Orphan/Not orphan" style="padding: 20px; width:300px;
+ 	 "><br><br>
+ 	 <input type="number" name="points" placeholder="A level points" style="padding: 20px; width:300px;
+ 	 "><br><br>
+ 	
+ 	 
+ 	 <input type="submit" name="status" value="verify Tuition" style="padding: 20px; width:300px;
+ 	 ">
+
+ 	 <?php if(isset($mathScore)): ?><?php echo $mathScore; ?><?php endif; ?>
+ 	</form>
+ </div>
+ </div>
+ </body>
+ </html>
+
+
+<?php
+$mathscore = 80;
+$final_answer = "";
+
+if(isset($_POST['submit_form'])) {
+	$math = $_POST['math'];
+	if($math >= 80) {
+	echo $final_answer =  '<br>' ."Math:". " ". "A";
+	}
+	elseif($math >= 70){
+	echo '<br>' . "Math:". " ". "B";
+     }
+    elseif($math >= 50){
+	echo '<br>' . "Math:". " ". "C";
+    }
+    elseif($math >= 60){
+	echo '<br>' . "Math:". " ". "D";
+     }
+    else{
+	echo '<br>' . "Math:". " ". "F";
+}
+
+
+$eng = $_POST['eng'];
+if($eng >= 80) {
+	echo $final_answer =  '<br>' ."Math:". " ". "A";
+	}
+	elseif($eng >= 70){
+	echo '<br>' . "English:". " ". "B";
+     }
+    elseif($eng >= 50){
+	echo '<br>' . "English:". " ". "C";
+    }
+    elseif($eng >= 60){
+	echo '<br>' . "English:". " ". "D";
+     }
+    else{
+	echo '<br>' . "English:". " ". "F";
+}
+
+$sciences = $_POST['sciences'];
+if($sciences >= 80) {
+	echo $final_answer =  '<br>' ."Science:". " ". "A";
+	}
+	elseif($sciences >= 70){
+	echo '<br>' . "Science:". " ". "B";
+     }
+    elseif($sciences >= 50){
+	echo '<br>' . "Science:". " ". "C";
+    }
+    elseif($sciences >= 60){
+	echo '<br>' . "Science:". " ". "D";
+     }
+    else{
+	echo '<br>' . "Science:". " ". "F";
+}
+
+
+$sst = $_POST['sst'];
+if($sciences >= 80) {
+	echo $final_answer =  '<br>' ."SST:". " ". "A";
+	}
+	elseif($sst >= 70){
+	echo '<br>' . "SST:". " ". "B";
+     }
+    elseif($sst >= 50){
+	echo '<br>' . "SST:". " ". "C";
+    }
+    elseif($sst >= 60){
+	echo '<br>' . "SST:". " ". "D";
+     }
+    else{
+	echo '<br>' . "SST:". " ". "F";
+}
+
+
+
+}
+
+?>
+
+
+<?php
+if(isset($_POST['status'])) {
+	$nationality = $_POST['nationality'];
+	$is_orphan = $_POST['status'];
+	$points = $_POST['points'];
+	$ugandan = "Ugandan";
+	$true = "true";
+
+	// titution determination system starts here.
+echo '<br>'  . "Tuition Determination System:";
+$a_level_points = 45;
+// decision making starts from here;
+if($nationality = $ugandan && $is_orphan= $true){
+	echo '<br>' ."Tuition for domestic orphan students is $" ." " ."10000";
+}
+ if($nationality != $ugandan && $is_orphan != $true){
+ 	echo '<br>' ."tuition for International and un orphan students is $"." " ."20000";
+ }
+ elseif($nationality = $ugandan && $is_orphan= $true && $points > $a_level_points){
+ 	echo '<br>' ."Your Tuition is $" ." " ."5000";
+ }
+ elseif($nationality = $ugandan && $points < $a_level_points){
+ 	echo '<br>' ."Your Tuition is $" ." " ."8000";	
+ }
+ elseif($nationality != $ugandan && $points >= $a_level_points){
+ 	echo '<br>' ."Your Tuition is $" ." " ."15000";	
+ }
+
+}
